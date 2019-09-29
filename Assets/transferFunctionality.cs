@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 public class transferFunctionality : MonoBehaviour
 {
 
@@ -121,7 +121,6 @@ public class transferFunctionality : MonoBehaviour
                         case "Core0Temp":
                             //edit Core0Temp;
                             changeParameter(command, Core0Temp);
-
                             break;
                         case "PDU0Temp":
                             //edit PDU0Temp
@@ -270,57 +269,64 @@ public class transferFunctionality : MonoBehaviour
                     }
                     else {
                         //define destination register number:
-                        string destinationRegisterNoStr = command[2].ToString().Substring(1); //remove r
-                        int destinationRegisterNo = int.Parse(destinationRegisterNoStr);
-                        switch (command[1].ToString()) {
-                            case "R0":
-                                assignRegister(destinationRegisterNo, R0);
-                                break;
-                            case "R1":
-                                assignRegister(destinationRegisterNo, R1);
-                                break;
-                            case "R2":
-                                assignRegister(destinationRegisterNo, R2);
-                                break;
-                            case "R3":
-                                assignRegister(destinationRegisterNo, R3);
-                                break;
-                            case "R4":
-                                assignRegister(destinationRegisterNo, R4);
-                                break;
-                            case "R5":
-                                assignRegister(destinationRegisterNo, R5);
-                                break;
-                            case "R6":
-                                assignRegister(destinationRegisterNo, R6);
-                                break;
-                            case "R7":
-                                assignRegister(destinationRegisterNo, R7);
-                                break;
-                            case "R8":
-                                assignRegister(destinationRegisterNo, R8);
-                                break;
-                            case "R9":
-                                assignRegister(destinationRegisterNo, R9);
-                                break;
-                            case "R10":
-                                assignRegister(destinationRegisterNo, R10);
-                                break;
-                            case "R11":
-                                assignRegister(destinationRegisterNo, R11);
-                                break;
-                            case "R12":
-                                assignRegister(destinationRegisterNo, R12);
-                                break;
-                            case "R13":
-                                assignRegister(destinationRegisterNo, R13);
-                                break;
-                            case "R14":
-                                assignRegister(destinationRegisterNo, R14);
-                                break;
-                            case "R15":
-                                assignRegister(destinationRegisterNo, R15);
-                                break;
+                        if(command[2].ToString().Equals("R*")){
+
+                            assignRegister(1, R0);
+                            StartCoroutine(LambdaT());
+                        }else{
+                            string destinationRegisterNoStr = command[2].ToString().Substring(1); //remove r
+                            int destinationRegisterNo = int.Parse(destinationRegisterNoStr);
+                            switch (command[1].ToString()) {
+                                case "R0":
+                                    assignRegister(destinationRegisterNo, R0);
+                                    break;
+                                case "R1":
+                                    assignRegister(destinationRegisterNo, R1);
+                                    break;
+                                case "R2":
+                                    assignRegister(destinationRegisterNo, R2);
+                                    break;
+                                case "R3":
+                                    assignRegister(destinationRegisterNo, R3);
+                                    break;
+                                case "R4":
+                                    assignRegister(destinationRegisterNo, R4);
+                                    break;
+                                case "R5":
+                                    assignRegister(destinationRegisterNo, R5);
+                                    break;
+                                case "R6":
+                                    assignRegister(destinationRegisterNo, R6);
+                                    break;
+                                case "R7":
+                                    assignRegister(destinationRegisterNo, R7);
+                                    break;
+                                case "R8":
+                                    assignRegister(destinationRegisterNo, R8);
+                                    break;
+                                case "R9":
+                                    assignRegister(destinationRegisterNo, R9);
+                                    break;
+                                case "R10":
+                                    assignRegister(destinationRegisterNo, R10);
+                                    break;
+                                case "R11":
+                                    assignRegister(destinationRegisterNo, R11);
+                                    break;
+                                case "R12":
+                                    assignRegister(destinationRegisterNo, R12);
+                                    break;
+                                case "R13":
+                                    assignRegister(destinationRegisterNo, R13);
+                                    break;
+                                case "R14":
+                                    assignRegister(destinationRegisterNo, R14);
+                                    break;
+                                case "R15":
+                                    assignRegister(destinationRegisterNo, R15);
+                                    break;
+
+                            }
                         }
                     }
 
@@ -934,6 +940,41 @@ public class transferFunctionality : MonoBehaviour
             Value = quotient;
         }
         return returnValue;
+    }
+
+    IEnumerator LambdaT(){
+        int waitTime = 1;
+        yield return new WaitForSeconds(1);
+        assignRegister(2, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(3, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(4, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(5, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(6, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(7, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(8, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(9, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(10, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(11, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(12, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(13, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(14, R0);
+        yield return new WaitForSeconds(1);
+        assignRegister(15, R0);
+        yield return new WaitForSeconds(1);
+
+        Debug.Log("Waited");
     }
 
     }

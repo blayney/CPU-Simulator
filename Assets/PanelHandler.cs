@@ -16,7 +16,7 @@ public class PanelHandler : MonoBehaviour
     public Canvas DRAMCONTROL;
     public Canvas SCHEMACONTROL;
     public Canvas GRAPHSCNTRL;
-    private CanvasGroup group;
+    private CanvasGroup groups;
 
     public Image DTBar;
     public Vector3 startPosition;
