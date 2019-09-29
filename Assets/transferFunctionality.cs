@@ -943,36 +943,50 @@ public class transferFunctionality : MonoBehaviour
     }
 
     IEnumerator LambdaT(){
-        int waitTime = 1;
-        yield return new WaitForSeconds(1);
+        float waitTime = 1/MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(2, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(3, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(4, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(5, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(6, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(7, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(8, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(9, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(10, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(11, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
         assignRegister(12, R0);
-        yield return new WaitForSeconds(1);
+        waitTime = 1 / MCSlider.value;
+        yield return new WaitForSeconds(waitTime);
+        waitTime = 1 / MCSlider.value;
         assignRegister(13, R0);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(waitTime);
+        waitTime = 1 / MCSlider.value;
         assignRegister(14, R0);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(waitTime);
+        waitTime = 1 / MCSlider.value;
         assignRegister(15, R0);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(waitTime);
 
         Debug.Log("Waited");
     }

@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 18214
+  controlID: 19311
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -135,7 +135,7 @@ MonoBehaviour:
   - {fileID: 6}
   - {fileID: 2}
   m_Selected: 3
-  m_LastSelected: 2
+  m_LastSelected: 0
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,9 +172,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -12.887334, y: 2.1168199, z: 33.57126}
+    m_Target: {x: -1.1164355, y: 13.993953, z: 24.673431}
     speed: 2
-    m_Value: {x: -12.887334, y: 2.1168199, z: 33.57126}
+    m_Value: {x: -1.1164355, y: 13.993953, z: 24.673431}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -207,9 +207,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 107.8672
+    m_Target: 136.11363
     speed: 2
-    m_Value: 107.8672
+    m_Value: 136.11363
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 18215
+  controlID: 19286
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -496,7 +496,7 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5abc0100
+    m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: ffffffff00000000fa2c000000ca9a3b
     m_RenameOverlay:
@@ -523,8 +523,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 5abc0100
-    m_LastClickedInstanceID: 113754
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
