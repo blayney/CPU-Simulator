@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Text.RegularExpressions;
 public class transferFunctionality : MonoBehaviour
 {
 
@@ -58,12 +59,15 @@ public class transferFunctionality : MonoBehaviour
         {
             SendText(command.text);
             command.text = "";
+            
+            
         }
 
     }
     private void SendText(string text)
 
     {
+
         console.text += "\n" + text + " ~ sent to command handler";
         PanelHandler ph = PanelHanderObj.GetComponent<PanelHandler>();
 
@@ -74,13 +78,20 @@ public class transferFunctionality : MonoBehaviour
         bool displayMsg = true;
 
         if (text[0].Equals(triggerChar))
-
         {
             switch (command[0])
             {
                 case "!exec":
                     //call execution system.
-                    console.text += "\n" + writesheet.text;
+                    string processblock = writesheet.text;
+                    string[] execCommandLbL = Regex.Split(processblock, "\r\n");
+
+
+                    for(int ia = 0; ia < execCommandLbL.Length; ia++){
+                        SendText(execCommandLbL[ia]);
+                        console.text += "Processing " + execCommandLbL[ia];
+
+                    }
                     break;
                 case "!viewPane":
                     switch (command[1]) {
@@ -167,7 +178,7 @@ public class transferFunctionality : MonoBehaviour
                         default:
                             commandSuccessful = false;
                             console.text += "\n" + "command error - can't find parameter";
-                            break;
+                            break; // all IDXes need non recursive cases for performance
 
                     }
                     break;
@@ -190,7 +201,7 @@ public class transferFunctionality : MonoBehaviour
                         if (command[2].Length == 2) //if the register number is less than 10
                         {
                             switch (int.Parse((command[2][1].ToString())))
-                            {
+                            {//needs default case
                                 case 0:
                                     assignRegister(0, int.Parse(command[1]));
                                     break;
