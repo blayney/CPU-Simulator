@@ -198,152 +198,8 @@ public class transferFunctionality : MonoBehaviour
             // parse text and process it as assembly code.
             switch (command[0]) {
                 case ("MOV"):
-
-                    if (command[1][0].ToString().StartsWith('#'.ToString()))
-                    { // if immediate addressing is used
-
-                        command[1] = command[1].Substring(1);//remove #
-
-                        if (command[2].Length == 2) //if the register number is less than 10
-                        {
-                            switch (int.Parse((command[2][1].ToString())))
-                            {//needs default case
-                                case 0:
-                                    assignRegister(0, int.Parse(command[1]));
-                                    break;
-                                case 1:
-                                    assignRegister(1, int.Parse(command[1]));
-                                    break;
-                                case 2:
-                                    assignRegister(2, int.Parse(command[1]));
-                                    break;
-                                case 3:
-                                    assignRegister(3, int.Parse(command[1]));
-                                    break;
-                                case 4:
-                                    assignRegister(4, int.Parse(command[1]));
-                                    break;
-                                case 5:
-                                    assignRegister(5, int.Parse(command[1]));
-                                    break;
-                                case 6:
-                                    assignRegister(6, int.Parse(command[1]));
-                                    break;
-                                case 7:
-                                    assignRegister(7, int.Parse(command[1]));
-                                    break;
-                                case 8:
-                                    assignRegister(8, int.Parse(command[1]));
-                                    break;
-                                case 9:
-                                    assignRegister(9, int.Parse(command[1]));
-                                    break;
-                                case 10:
-                                    assignRegister(10, int.Parse(command[1]));
-                                    break;
-                                case 11:
-                                    assignRegister(11, int.Parse(command[1]));
-                                    break;
-                                case 12:
-                                    assignRegister(12, int.Parse(command[1]));
-                                    break;
-                                case 13:
-                                    assignRegister(13, int.Parse(command[1]));
-                                    break;
-                                case 14:
-                                    assignRegister(14, int.Parse(command[1]));
-                                    break;
-                                case 15:
-                                    assignRegister(15, int.Parse(command[1]));
-                                    break;
-                            }
-                        }
-                        else
-                        { // if the register number is greater than 10, and therefore has two digits to it's number
-                            switch (int.Parse((command[2][2].ToString())))
-                            {
-                                case 0:
-                                    assignRegister(10, int.Parse(command[1]));
-                                    break;
-                                case 1:
-                                    assignRegister(11, int.Parse(command[1]));
-                                    break;
-                                case 2:
-                                    assignRegister(12, int.Parse(command[1]));
-                                    break;
-                                case 3:
-                                    assignRegister(13, int.Parse(command[1]));
-                                    break;
-                                case 4:
-                                    assignRegister(14, int.Parse(command[1]));
-                                    break;
-                                case 5:
-                                    assignRegister(15, int.Parse(command[1]));
-                                    break;
-                            }
-                        }
-                    }
-                    else {
-                        //define destination register number:
-                        if(command[2].ToString().Equals("R*")){
-                            assignRegister(1, R0);
-                            StartCoroutine(LambdaT());
-                        }else{
-                            string destinationRegisterNoStr = command[2].ToString().Substring(1); //remove r
-                            int destinationRegisterNo = int.Parse(destinationRegisterNoStr);
-                            switch (command[1].ToString()) {
-                                case "R0":
-                                    assignRegister(destinationRegisterNo, R0);
-                                    break;
-                                case "R1":
-                                    assignRegister(destinationRegisterNo, R1);
-                                    break;
-                                case "R2":
-                                    assignRegister(destinationRegisterNo, R2);
-                                    break;
-                                case "R3":
-                                    assignRegister(destinationRegisterNo, R3);
-                                    break;
-                                case "R4":
-                                    assignRegister(destinationRegisterNo, R4);
-                                    break;
-                                case "R5":
-                                    assignRegister(destinationRegisterNo, R5);
-                                    break;
-                                case "R6":
-                                    assignRegister(destinationRegisterNo, R6);
-                                    break;
-                                case "R7":
-                                    assignRegister(destinationRegisterNo, R7);
-                                    break;
-                                case "R8":
-                                    assignRegister(destinationRegisterNo, R8);
-                                    break;
-                                case "R9":
-                                    assignRegister(destinationRegisterNo, R9);
-                                    break;
-                                case "R10":
-                                    assignRegister(destinationRegisterNo, R10);
-                                    break;
-                                case "R11":
-                                    assignRegister(destinationRegisterNo, R11);
-                                    break;
-                                case "R12":
-                                    assignRegister(destinationRegisterNo, R12);
-                                    break;
-                                case "R13":
-                                    assignRegister(destinationRegisterNo, R13);
-                                    break;
-                                case "R14":
-                                    assignRegister(destinationRegisterNo, R14);
-                                    break;
-                                case "R15":
-                                    assignRegister(destinationRegisterNo, R15);
-                                    break;
-                            }
-                        }
-                    }
-                    break;
+                    MODFunction(command);
+                break;
             }
             writesheet.text += "\n" + text;
         }
@@ -452,6 +308,164 @@ public class transferFunctionality : MonoBehaviour
                 assignDRAM(RegisterValue, 15);
                 break;
         }
+    }
+
+    private void execMultiLine(string[] command){
+
+
+    }
+
+    private void MODFunction(string[] command){
+        if (command[1][0].ToString().StartsWith('#'.ToString()))
+        { // if immediate addressing is used
+
+            command[1] = command[1].Substring(1);//remove #
+
+            if (command[2].Length == 2) //if the register number is less than 10
+            {
+                switch (int.Parse((command[2][1].ToString())))
+                {//needs default case
+                    case 0:
+                        assignRegister(0, int.Parse(command[1]));
+                        break;
+                    case 1:
+                        assignRegister(1, int.Parse(command[1]));
+                        break;
+                    case 2:
+                        assignRegister(2, int.Parse(command[1]));
+                        break;
+                    case 3:
+                        assignRegister(3, int.Parse(command[1]));
+                        break;
+                    case 4:
+                        assignRegister(4, int.Parse(command[1]));
+                        break;
+                    case 5:
+                        assignRegister(5, int.Parse(command[1]));
+                        break;
+                    case 6:
+                        assignRegister(6, int.Parse(command[1]));
+                        break;
+                    case 7:
+                        assignRegister(7, int.Parse(command[1]));
+                        break;
+                    case 8:
+                        assignRegister(8, int.Parse(command[1]));
+                        break;
+                    case 9:
+                        assignRegister(9, int.Parse(command[1]));
+                        break;
+                    case 10:
+                        assignRegister(10, int.Parse(command[1]));
+                        break;
+                    case 11:
+                        assignRegister(11, int.Parse(command[1]));
+                        break;
+                    case 12:
+                        assignRegister(12, int.Parse(command[1]));
+                        break;
+                    case 13:
+                        assignRegister(13, int.Parse(command[1]));
+                        break;
+                    case 14:
+                        assignRegister(14, int.Parse(command[1]));
+                        break;
+                    case 15:
+                        assignRegister(15, int.Parse(command[1]));
+                        break;
+                }
+            }
+            else
+            { // if the register number is greater than 10, and therefore has two digits to it's number
+                switch (int.Parse((command[2][2].ToString())))
+                {
+                    case 0:
+                        assignRegister(10, int.Parse(command[1]));
+                        break;
+                    case 1:
+                        assignRegister(11, int.Parse(command[1]));
+                        break;
+                    case 2:
+                        assignRegister(12, int.Parse(command[1]));
+                        break;
+                    case 3:
+                        assignRegister(13, int.Parse(command[1]));
+                        break;
+                    case 4:
+                        assignRegister(14, int.Parse(command[1]));
+                        break;
+                    case 5:
+                        assignRegister(15, int.Parse(command[1]));
+                        break;
+                }
+            }
+        }
+        else
+        {
+            //define destination register number:
+            if (command[2].ToString().Equals("R*"))
+            {
+                assignRegister(1, R0);
+                StartCoroutine(LambdaT());
+            }
+            else
+            {
+                string destinationRegisterNoStr = command[2].ToString().Substring(1); //remove r
+                int destinationRegisterNo = int.Parse(destinationRegisterNoStr);
+                switch (command[1].ToString())
+                {
+                    case "R0":
+                        assignRegister(destinationRegisterNo, R0);
+                        break;
+                    case "R1":
+                        assignRegister(destinationRegisterNo, R1);
+                        break;
+                    case "R2":
+                        assignRegister(destinationRegisterNo, R2);
+                        break;
+                    case "R3":
+                        assignRegister(destinationRegisterNo, R3);
+                        break;
+                    case "R4":
+                        assignRegister(destinationRegisterNo, R4);
+                        break;
+                    case "R5":
+                        assignRegister(destinationRegisterNo, R5);
+                        break;
+                    case "R6":
+                        assignRegister(destinationRegisterNo, R6);
+                        break;
+                    case "R7":
+                        assignRegister(destinationRegisterNo, R7);
+                        break;
+                    case "R8":
+                        assignRegister(destinationRegisterNo, R8);
+                        break;
+                    case "R9":
+                        assignRegister(destinationRegisterNo, R9);
+                        break;
+                    case "R10":
+                        assignRegister(destinationRegisterNo, R10);
+                        break;
+                    case "R11":
+                        assignRegister(destinationRegisterNo, R11);
+                        break;
+                    case "R12":
+                        assignRegister(destinationRegisterNo, R12);
+                        break;
+                    case "R13":
+                        assignRegister(destinationRegisterNo, R13);
+                        break;
+                    case "R14":
+                        assignRegister(destinationRegisterNo, R14);
+                        break;
+                    case "R15":
+                        assignRegister(destinationRegisterNo, R15);
+                        break;
+                }
+            }
+        }
+
     }
 
     private void assignDRAM(int Value, int RegisterNumber) { // DODGY CODE
