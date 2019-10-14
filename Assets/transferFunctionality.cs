@@ -38,7 +38,7 @@ public class transferFunctionality : MonoBehaviour
     public int[] CurrentQueue = new int[8];
     public GameObject Oscillators;
     public GameObject PanelHanderObj;
-
+    public bool lineByLine = true;
     void Start()
     {
         int numRows = 32;
@@ -85,13 +85,20 @@ public class transferFunctionality : MonoBehaviour
                     //call execution system.
                     string processblock = writesheet.text;
                     string[] execCommandLbL = Regex.Split(processblock, "\r\n");
-
-
                     for(int ia = 0; ia < execCommandLbL.Length; ia++){
                         SendText(execCommandLbL[ia]);
                         console.text += "Processing " + execCommandLbL[ia];
 
                     }
+                    break;
+                case "!execMode":
+                    switch(command[1]){
+                        case "block":
+                            lineByLine = false;
+                        break;
+
+                    }
+                    
                     break;
                 case "!viewPane":
                     switch (command[1]) {
@@ -179,7 +186,6 @@ public class transferFunctionality : MonoBehaviour
                             commandSuccessful = false;
                             console.text += "\n" + "command error - can't find parameter";
                             break; // all IDXes need non recursive cases for performance
-
                     }
                     break;
                 default:
@@ -275,13 +281,11 @@ public class transferFunctionality : MonoBehaviour
                                     assignRegister(15, int.Parse(command[1]));
                                     break;
                             }
-
                         }
                     }
                     else {
                         //define destination register number:
                         if(command[2].ToString().Equals("R*")){
-
                             assignRegister(1, R0);
                             StartCoroutine(LambdaT());
                         }else{
@@ -336,15 +340,9 @@ public class transferFunctionality : MonoBehaviour
                                 case "R15":
                                     assignRegister(destinationRegisterNo, R15);
                                     break;
-
                             }
                         }
                     }
-
-                    
-
-                   
-
                     break;
             }
             writesheet.text += "\n" + text;
@@ -367,9 +365,7 @@ public class transferFunctionality : MonoBehaviour
             textItem.text = command[3];
         }
         if (command[1].Equals("reset")) {
-            
         }
-        
     }
 
     private void assignRegister(int RegisterNumber, int RegisterValue) { //assign immediate value listed to register.
@@ -455,7 +451,6 @@ public class transferFunctionality : MonoBehaviour
                 R15V.text = RegisterValue.ToString();
                 assignDRAM(RegisterValue, 15);
                 break;
-
         }
     }
 
@@ -468,7 +463,6 @@ public class transferFunctionality : MonoBehaviour
                 if (RegisterDRAMPointer[aa] == RegisterNumber)
                 {
                     int goTo = aa;
-                    
                     toStore = convertTo8BB(Value);
                     DRAMTBL[goTo, 0] = toStore[0];
                     DRAMTBL[goTo, 1] = toStore[1];
@@ -480,13 +474,8 @@ public class transferFunctionality : MonoBehaviour
                     DRAMTBL[goTo, 7] = toStore[7];
                     assignL1(RegisterNumber, goTo);
                     break;
-
                 }
-
-
             }
-
-
         }
         else { // if register is not already assigned, assigns for first time
             for (int ab = 0; ab < 32; ab++) {
