@@ -198,7 +198,7 @@ public class transferFunctionality : MonoBehaviour
             // parse text and process it as assembly code.
             switch (command[0]) {
                 case ("MOV"):
-                    MODFunction(command);
+                    MOVFunction(command);
                 break;
             }
             writesheet.text += "\n" + text;
@@ -310,12 +310,84 @@ public class transferFunctionality : MonoBehaviour
         }
     }
 
+    private void resetEnvironment(){
+        R0 = 0;
+        R1 = 0;
+        R2 = 0;
+        R3 = 0;
+        R4 = 0;
+        R5 = 0;
+        R6 = 0;
+        R7 = 0;
+        R8 = 0;
+        R9 = 0;
+        R10 = 0;
+        R11 = 0;
+        R12 = 0;
+        R13 = 0;
+        R14 = 0;
+        R15 = 0;
+        R0V.text = "0";
+        R1V.text = "0";
+        R2V.text = "0";
+        R3V.text = "0";
+        R4V.text = "0";
+        R5V.text = "0";
+        R6V.text = "0";
+        R7V.text = "0";
+        R8V.text = "0";
+        R9V.text = "0";
+        R10V.text = "0";
+        R11V.text = "0";
+        R12V.text = "0";
+        R13V.text = "0";
+        R14V.text = "0";
+        R15V.text = "0";
+        
+        R0B0.text = R0B1.text = R0B2.text = R0B3.text = R0B4.text = R0B5.text = R0B6.text = R0B7.text = "0";
+        R1B0.text = R1B1.text = R1B2.text = R1B3.text = R1B4.text = R1B5.text = R1B6.text = R1B7.text = "0";
+        R2B0.text = R2B1.text = R2B2.text = R2B3.text = R2B4.text = R2B5.text = R2B6.text = R2B7.text = "0";
+        R3B0.text = R3B1.text = R3B2.text = R3B3.text = R3B4.text = R3B5.text = R3B6.text = R3B7.text = "0";
+        R4B0.text = R4B1.text = R4B2.text = R4B3.text = R4B4.text = R4B5.text = R4B6.text = R4B7.text = "0";
+        R5B0.text = R5B1.text = R5B2.text = R5B3.text = R5B4.text = R5B5.text = R5B6.text = R5B7.text = "0";
+        R6B0.text = R6B1.text = R6B2.text = R6B3.text = R6B4.text = R6B5.text = R6B6.text = R6B7.text = "0";
+        R7B0.text = R7B1.text = R7B2.text = R7B3.text = R7B4.text = R7B5.text = R7B6.text = R7B7.text = "0";
+        R8B0.text = R8B1.text = R8B2.text = R8B3.text = R8B4.text = R8B5.text = R8B6.text = R8B7.text = "0";
+        R9B0.text = R9B1.text = R9B2.text = R9B3.text = R9B4.text = R9B5.text = R9B6.text = R9B7.text = "0";
+        R10B0.text = R10B1.text = R10B2.text = R10B3.text = R10B4.text = R10B5.text = R10B6.text = R10B7.text = "0";
+        R11B0.text = R11B1.text = R11B2.text = R11B3.text = R11B4.text = R11B5.text = R11B6.text = R11B7.text = "0";
+        R12B0.text = R12B1.text = R12B2.text = R12B3.text = R12B4.text = R12B5.text = R12B6.text = R12B7.text = "0";
+
+        DRAM0.text = DRAM1.text = DRAM2.text = DRAM3.text = DRAM4.text = DRAM5.text = DRAM6.text = DRAM7.text = "0";
+        DRAM8.text = DRAM9.text = DRAM10.text = DRAM11.text = DRAM12.text = DRAM13.text = DRAM14.text = DRAM15.text = "0";
+        L10.text = L11.text = L12.text = L13.text = L14.text = L15.text = L16.text = L17.text = L18.text = L19.text = "text";
+        L110.text = L111.text = L112.text = L113.text = L114.text = L115.text = "0";
+        int acc;
+        for (acc = 0; acc < 17; acc++){
+            RegisterAlreadyAssigned[acc] = false;
+            RegisterL1AlreadyAssigned[acc] = false;
+
+        }
+        for (acc = 0; acc < 14; acc++)
+        {
+            L1AlreadyAssigned[acc] = false;
+
+        } 
+    }
+
+
     private void execMultiLine(string[] command){
 
+        switch (command[0]){
+            case "MOV":
+                MOVFunction(command);
+                break;
+
+        }
 
     }
 
-    private void MODFunction(string[] command){
+    private void MOVFunction(string[] command){
         if (command[1][0].ToString().StartsWith('#'.ToString()))
         { // if immediate addressing is used
 
