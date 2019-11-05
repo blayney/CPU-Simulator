@@ -30,7 +30,7 @@ public class ResetScene : MonoBehaviour
     {
         AsyncOperation op = SceneManager.LoadSceneAsync(1);
         while (!op.isDone)
-        {
+        {//test comment
             float progress = Mathf.Clamp01(op.progress / .9f);
             Slidy.value = progress;
             yield return null;
