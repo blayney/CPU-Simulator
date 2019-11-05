@@ -28,13 +28,14 @@ public class SceneManagement : MonoBehaviour
 
     IEnumerator LoadAsync(int sceneIndex)
     {
-        AsyncOperation op = SceneManager.LoadSceneAsync(sceneIndex);
+        AsyncOperation op = SceneManager.LoadSceneAsync(1);
         while (!op.isDone)
         {
             float progress = Mathf.Clamp01(op.progress / .9f);
             Slidy.value = progress;
             yield return null;
         }
-
+       
 
     }
+}
