@@ -7,7 +7,8 @@ public class transferFunctionality : MonoBehaviour
 
     public int maxTexts = 256;
     public Button goButton;
-    public Text writesheet, command, console, Core0Temp, PDU0Temp, PDU1Temp, FPGATemp;
+    public Text writesheet, commandBox, console, Core0Temp, PDU0Temp, PDU1Temp, FPGATemp;
+    public InputField inject;
     public Text CoreVoltage, PowerLimit, TempLimit, CoreClock, MemoryClock, FanSpeed;
     public Slider CVSlider, PLSlider, TLSlider, CCSlider, MCSlider, FSSlider;
     public int R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15;
@@ -57,8 +58,8 @@ public class transferFunctionality : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SendText(command.text);
-            command.text = "";
+            SendText(commandBox.text);
+            
             
             
         }
@@ -67,8 +68,10 @@ public class transferFunctionality : MonoBehaviour
     private void SendText(string text)
 
     {
-
+        inject.text = string.Empty;
         console.text += "\n" + text + " ~ sent to command handler";
+        inject.Select();
+        inject.ActivateInputField();
         PanelHandler ph = PanelHanderObj.GetComponent<PanelHandler>();
 
         string[] command = text.Split(new char[0]); //splits text into array by spaces
@@ -200,6 +203,8 @@ public class transferFunctionality : MonoBehaviour
                 case ("MOV"):
                     MOVFunction(command);
                 break;
+                //case ("LDA"):
+                    
             }
             writesheet.text += "\n" + text;
         }
