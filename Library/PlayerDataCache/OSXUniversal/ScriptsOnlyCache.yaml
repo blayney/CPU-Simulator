@@ -4,8 +4,10 @@ ScriptsOnlyBuild:
     - ColorChange
     - OscillatorHandler
     - PanelHandler
+    - SceneManagement
     - SendText
     - SliderValues
+    - loadingBar
     - transferFunctionality
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -98,6 +100,63 @@ ScriptsOnlyBuild:
     - Class: 483693784
       Script: {instanceID: 0}
     - Class: 1839735485
+      Script: {instanceID: 0}
+    Assets/Menoo.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9650}
+    - Class: 114
+      Script: {instanceID: 9670}
+    - Class: 114
+      Script: {instanceID: 9800}
+    - Class: 114
+      Script: {instanceID: 9840}
+    - Class: 114
+      Script: {instanceID: 10212}
+    - Class: 114
+      Script: {instanceID: 10548}
+    - Class: 114
+      Script: {instanceID: 10986}
+    - Class: 114
+      Script: {instanceID: 11326}
+    - Class: 114
+      Script: {instanceID: 11358}
+    - Class: 114
+      Script: {instanceID: 36132}
+    - Class: 114
+      Script: {instanceID: 158588}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 156049354
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -276,7 +335,7 @@ ScriptsOnlyBuild:
     className: OscillatorHandler
   - hash:
       serializedVersion: 2
-      Hash: df02301472a9f99b508c7b5d20e98205
+      Hash: cf62da7cd7c5af8acdf2cced17d43216
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: transferFunctionality
@@ -550,7 +609,20 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 9fca23b8b558858f8bf8b959c764ac6c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SceneManagement
+  - hash:
+      serializedVersion: 2
+      Hash: 4304fd9e03337d071ea7ceeae52f4549
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: loadingBar
   platform: 2
   scenePathNames:
+  - Assets/Menoo.unity
   - Assets/MainScene2.unity
   playerPath: /Applications/BuildGPCPUSim.app

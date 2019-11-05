@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{F664DF75-49C4-82C7-E914-3E06F279ECE0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/transferFunctionality.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/loadingBar.cs">
     <Files>
       <File FileName="Assets/transferFunctionality.cs" Line="13" Column="85" />
+      <File FileName="Assets/loadingBar.cs" Line="12" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
