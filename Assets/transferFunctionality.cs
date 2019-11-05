@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿  
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Text.RegularExpressions;
@@ -13,7 +14,7 @@ public class transferFunctionality : MonoBehaviour
     public Slider CVSlider, PLSlider, TLSlider, CCSlider, MCSlider, FSSlider;
     public int R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15;
     public Text R0V, R1V, R2V, R3V, R4V, R5V, R6V, R7V, R8V, R9V, R10V, R11V, R12V, R13V, R14V, R15V;
-    public int[,] DRAMTBL =  new int [32,9];//DRAM TABLE: FIRST 8 BITS IN ROW = DATA, LAST BIT IS A TAKEN FLAG
+    public int[,] DRAMTBL = new int[32, 9];//DRAM TABLE: FIRST 8 BITS IN ROW = DATA, LAST BIT IS A TAKEN FLAG
     public Text R0B0, R0B1, R0B2, R0B3, R0B4, R0B5, R0B6, R0B7;
     public Text R1B0, R1B1, R1B2, R1B3, R1B4, R1B5, R1B6, R1B7;
     public Text R2B0, R2B1, R2B2, R2B3, R2B4, R2B5, R2B6, R2B7;
@@ -59,9 +60,9 @@ public class transferFunctionality : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             SendText(commandBox.text);
-            
-            
-            
+
+
+
         }
 
     }
@@ -88,23 +89,26 @@ public class transferFunctionality : MonoBehaviour
                     //call execution system.
                     string processblock = writesheet.text;
                     string[] execCommandLbL = Regex.Split(processblock, "\r\n");
-                    for(int ia = 0; ia < execCommandLbL.Length; ia++){
+                    for (int ia = 0; ia < execCommandLbL.Length; ia++)
+                    {
                         SendText(execCommandLbL[ia]);
                         console.text += "Processing " + execCommandLbL[ia];
 
                     }
                     break;
                 case "!execMode":
-                    switch(command[1]){
+                    switch (command[1])
+                    {
                         case "block":
                             lineByLine = false;
-                        break;
+                            break;
 
                     }
-                    
+
                     break;
                 case "!viewPane":
-                    switch (command[1]) {
+                    switch (command[1])
+                    {
                         case "DRAM":
                             ph.ShowDRAMPane();
                             break;
@@ -197,14 +201,16 @@ public class transferFunctionality : MonoBehaviour
                     break;
             }
         }
-        else {
+        else
+        {
             // parse text and process it as assembly code.
-            switch (command[0]) {
+            switch (command[0])
+            {
                 case ("MOV"):
                     MOVFunction(command);
-                break;
-                //case ("LDA"):
-                    
+                    break;
+                    //case ("LDA"):
+
             }
             writesheet.text += "\n" + text;
         }
@@ -213,25 +219,32 @@ public class transferFunctionality : MonoBehaviour
         {
             console.text += "\n" + text + " ~ completed";
         }
-        else if(!displayMsg){
+        else if (!displayMsg)
+        {
 
         }
-        else {
+        else
+        {
             console.text += "\n" + text + " ~ command rejected";
         }
-        
+
     }
-    private void changeParameter(string[] command, Text textItem){
-        if (command[1].Equals("edit")) {
+    private void changeParameter(string[] command, Text textItem)
+    {
+        if (command[1].Equals("edit"))
+        {
             textItem.text = command[3];
         }
-        if (command[1].Equals("reset")) {
+        if (command[1].Equals("reset"))
+        {
         }
     }
 
-    private void assignRegister(int RegisterNumber, int RegisterValue) { //assign immediate value listed to register.
+    public void assignRegister(int RegisterNumber, int RegisterValue)
+    { //assign immediate value listed to register.
         bool hasMemAssignment = false;
-        switch (RegisterNumber) {
+        switch (RegisterNumber)
+        {
             case 0:
                 R0 = RegisterValue;
                 R0V.text = RegisterValue.ToString();
@@ -315,7 +328,8 @@ public class transferFunctionality : MonoBehaviour
         }
     }
 
-    private void resetEnvironment(){
+    private void resetEnvironment()
+    {
         R0 = 0;
         R1 = 0;
         R2 = 0;
@@ -348,7 +362,7 @@ public class transferFunctionality : MonoBehaviour
         R13V.text = "0";
         R14V.text = "0";
         R15V.text = "0";
-        
+
         R0B0.text = R0B1.text = R0B2.text = R0B3.text = R0B4.text = R0B5.text = R0B6.text = R0B7.text = "0";
         R1B0.text = R1B1.text = R1B2.text = R1B3.text = R1B4.text = R1B5.text = R1B6.text = R1B7.text = "0";
         R2B0.text = R2B1.text = R2B2.text = R2B3.text = R2B4.text = R2B5.text = R2B6.text = R2B7.text = "0";
@@ -368,7 +382,8 @@ public class transferFunctionality : MonoBehaviour
         L10.text = L11.text = L12.text = L13.text = L14.text = L15.text = L16.text = L17.text = L18.text = L19.text = "text";
         L110.text = L111.text = L112.text = L113.text = L114.text = L115.text = "0";
         int acc;
-        for (acc = 0; acc < 17; acc++){
+        for (acc = 0; acc < 17; acc++)
+        {
             RegisterAlreadyAssigned[acc] = false;
             RegisterL1AlreadyAssigned[acc] = false;
 
@@ -377,13 +392,15 @@ public class transferFunctionality : MonoBehaviour
         {
             L1AlreadyAssigned[acc] = false;
 
-        } 
+        }
     }
 
 
-    private void execMultiLine(string[] command){
+    private void execMultiLine(string[] command)
+    {
 
-        switch (command[0]){
+        switch (command[0])
+        {
             case "MOV":
                 MOVFunction(command);
                 break;
@@ -392,7 +409,8 @@ public class transferFunctionality : MonoBehaviour
 
     }
 
-    private void MOVFunction(string[] command){
+    public void MOVFunction(string[] command)
+    {
         if (command[1][0].ToString().StartsWith('#'.ToString()))
         { // if immediate addressing is used
 
@@ -545,7 +563,8 @@ public class transferFunctionality : MonoBehaviour
 
     }
 
-    private void assignDRAM(int Value, int RegisterNumber) { // DODGY CODE
+    private void assignDRAM(int Value, int RegisterNumber)
+    { // DODGY CODE
         int[] toStore = new int[7];
         if (RegisterAlreadyAssigned[RegisterNumber])
         {
@@ -568,9 +587,12 @@ public class transferFunctionality : MonoBehaviour
                 }
             }
         }
-        else { // if register is not already assigned, assigns for first time
-            for (int ab = 0; ab < 32; ab++) {
-                if (DRAMTBL[ab, 8] == 0) {
+        else
+        { // if register is not already assigned, assigns for first time
+            for (int ab = 0; ab < 32; ab++)
+            {
+                if (DRAMTBL[ab, 8] == 0)
+                {
                     toStore = convertTo8BB(Value);
                     DRAMTBL[ab, 0] = toStore[0];
                     DRAMTBL[ab, 1] = toStore[1];
@@ -641,7 +663,8 @@ public class transferFunctionality : MonoBehaviour
         }
     }
 
-    private void assignL1(int RegisterNumber, int LookupTableRow) {
+    private void assignL1(int RegisterNumber, int LookupTableRow)
+    {
         int L1Location = 0;
         if (!RegisterL1AlreadyAssigned[RegisterNumber])
         {
@@ -803,7 +826,8 @@ public class transferFunctionality : MonoBehaviour
                 RegisterL1Pointer[RegisterNumber] = 12;
             }
 
-            switch (RegisterNumber) {
+            switch (RegisterNumber)
+            {
                 case 0:
                     L10.text = L1LookupCachedValue.ToString();
                     break;
@@ -857,8 +881,9 @@ public class transferFunctionality : MonoBehaviour
             RegisterL1AlreadyAssigned[RegisterNumber] = true;
             //needs override for when cached l1 reaches 13
         }
-        else {//update L1
-            if (RegisterL1Pointer[0]==RegisterNumber)
+        else
+        {//update L1
+            if (RegisterL1Pointer[0] == RegisterNumber)
             {
                 R0B0.text = DRAMTBL[LookupTableRow, 0].ToString();
                 R0B1.text = DRAMTBL[LookupTableRow, 1].ToString();
@@ -1016,15 +1041,17 @@ public class transferFunctionality : MonoBehaviour
                 RegisterL1Pointer[RegisterNumber] = 12;
             }
         }
-        }
+    }
 
 
-    private int[] convertTo8BB(int Value) {
-        int[] returnValue = { 0,0,0,0,0,0,0,0};
+    private int[] convertTo8BB(int Value)
+    {
+        int[] returnValue = { 0, 0, 0, 0, 0, 0, 0, 0 };
         int bit = 0;
         int quotient = 0;
         int ordinal = 7;
-        while (Value > 0) {
+        while (Value > 0)
+        {
             returnValue[ordinal] = Value % 2;
             quotient = Value / 2;
             ordinal--;
@@ -1033,8 +1060,9 @@ public class transferFunctionality : MonoBehaviour
         return returnValue;
     }
 
-    IEnumerator LambdaT(){
-        float waitTime = 1/MCSlider.value;
+    public IEnumerator LambdaT()
+    {
+        float waitTime = 1 / MCSlider.value;
         yield return new WaitForSeconds(waitTime);
         assignRegister(2, R0);
         waitTime = 1 / MCSlider.value;
@@ -1082,7 +1110,7 @@ public class transferFunctionality : MonoBehaviour
         Debug.Log("Waited");
     }
 
-    }
+}
 
 
 

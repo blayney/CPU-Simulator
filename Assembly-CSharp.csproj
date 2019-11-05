@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AssemblyHandler.cs" />
     <Compile Include="Assets\ColorChange.cs" />
     <Compile Include="Assets\loadingBar.cs" />
     <Compile Include="Assets\OscillatorHandler.cs" />
